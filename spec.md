@@ -99,7 +99,7 @@
 
 ### Phase 6: Testing 🧪
 
-- [ ] Setup **Jest** and **React Testing Library**.
+- [ ] Setup **Vitest** and **React Testing Library**.
 - [ ] Write unit test for `RegisterForm` (render + validation).
 - [ ] Write unit test for `LoginForm` (render + submission).
 - [ ] Write unit test for at least **1 validation utility function**.
