@@ -3,131 +3,129 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #fcfcfc;
-  --foreground: #0e142b;
-  --card: #fafafa;
-  --card-foreground: #0e142b;
+  --background: #f0f2f5;
+  --foreground: #111b21;
+  --card: #ffffff;
+  --card-foreground: #111b21;
   --popover: #ffffff;
-  --popover-foreground: #0e142b;
-  --primary: #2e67ff;
+  --popover-foreground: #111b21;
+  --primary: #075e54;
   --primary-foreground: #ffffff;
-  --secondary: #0e142b;
-  --secondary-foreground: #ffffff;
-  --muted: #ffffff;
-  --muted-foreground: #0e142b;
-  --accent: #ffffff;
-  --accent-foreground: #2e67ff;
-  --destructive: #ff6c35;
+  --secondary: #e7f8f0;
+  --secondary-foreground: #075e54;
+  --muted: #f0f2f5;
+  --muted-foreground: #667781;
+  --accent: #25d366;
+  --accent-foreground: #ffffff;
+  --destructive: #ea4335;
   --destructive-foreground: #ffffff;
-  --border: #e7e4e4;
-  --input: #cccccc;
-  --ring: #2e6aff;
-  --chart-1: #2e67ff;
-  --chart-2: #00cdcc;
-  --chart-3: #f9ff40;
-  --chart-4: #00eeba;
-  --chart-5: #ff2822;
-  --sidebar: #fafafa;
-  --sidebar-foreground: #0e142b;
-  --sidebar-primary: #2e67ff;
+  --border: #e9edef;
+  --input: #e9edef;
+  --ring: #25d366;
+  --chart-1: #25d366;
+  --chart-2: #075e54;
+  --chart-3: #128c7e;
+  --chart-4: #34b7f1;
+  --chart-5: #00a884;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #111b21;
+  --sidebar-primary: #075e54;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #ffffff;
-  --sidebar-accent-foreground: #2e67ff;
-  --sidebar-border: #ffffff;
-  --sidebar-ring: #2e6aff;
-  --font-sans: Open Sans, sans-serif;
+  --sidebar-accent: #e7f8f0;
+  --sidebar-accent-foreground: #075e54;
+  --sidebar-border: #e9edef;
+  --sidebar-ring: #25d366;
+  --font-sans:
+    Segoe UI, Helvetica Neue, Helvetica, Lucida Grande, Arial, Ubuntu, Cantarell,
+    Fira Sans, sans-serif;
   --font-serif: Georgia, serif;
-  --font-mono: Menlo, monospace;
-  --radius: 1.3rem;
-  --shadow-x: -50px;
+  --font-mono:
+    SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New,
+    monospace;
+  --radius: 1rem;
+  --shadow-x: 0px;
   --shadow-y: 2px;
-  --shadow-blur: 0px;
-  --shadow-spread: -50px;
-  --shadow-opacity: 0;
-  --shadow-color: #2e6aff;
-  --shadow-2xs: -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0);
-  --shadow-xs: -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0);
+  --shadow-blur: 10px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.1;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-2xs: 0px 2px 10px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0px 2px 10px 0px hsl(0 0% 0% / 0.05);
   --shadow-sm:
-    -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0),
-    -50px 1px 2px -51px hsl(222.7751 100% 59.0196% / 0);
+    0px 2px 10px 0px hsl(0 0% 0% / 0.1), 0px 1px 2px -1px hsl(0 0% 0% / 0.1);
   --shadow:
-    -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0),
-    -50px 1px 2px -51px hsl(222.7751 100% 59.0196% / 0);
+    0px 2px 10px 0px hsl(0 0% 0% / 0.1), 0px 1px 2px -1px hsl(0 0% 0% / 0.1);
   --shadow-md:
-    -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0),
-    -50px 2px 4px -51px hsl(222.7751 100% 59.0196% / 0);
+    0px 2px 10px 0px hsl(0 0% 0% / 0.1), 0px 2px 4px -1px hsl(0 0% 0% / 0.1);
   --shadow-lg:
-    -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0),
-    -50px 4px 6px -51px hsl(222.7751 100% 59.0196% / 0);
+    0px 2px 10px 0px hsl(0 0% 0% / 0.1), 0px 4px 6px -1px hsl(0 0% 0% / 0.1);
   --shadow-xl:
-    -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0),
-    -50px 8px 10px -51px hsl(222.7751 100% 59.0196% / 0);
-  --shadow-2xl: -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0);
+    0px 2px 10px 0px hsl(0 0% 0% / 0.1), 0px 8px 10px -1px hsl(0 0% 0% / 0.1);
+  --shadow-2xl: 0px 2px 10px 0px hsl(0 0% 0% / 0.25);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
 
 .dark {
-  --background: #000000;
-  --foreground: #ffffff;
-  --card: #0f0f0f;
-  --card-foreground: #d9d9d9;
-  --popover: #000000;
-  --popover-foreground: #ffffff;
-  --primary: #2b65ff;
-  --primary-foreground: #ffffff;
-  --secondary: #ffffff;
-  --secondary-foreground: #0e142b;
-  --muted: #181818;
-  --muted-foreground: #7b7e8c;
-  --accent: #000e39;
-  --accent-foreground: #2b65ff;
-  --destructive: #ff6c35;
-  --destructive-foreground: #ffffff;
-  --border: #26272e;
-  --input: #162151;
-  --ring: #2e6aff;
-  --chart-1: #2e67ff;
-  --chart-2: #00cdcc;
-  --chart-3: #f9ff40;
-  --chart-4: #00eeba;
-  --chart-5: #ff2822;
-  --sidebar: #0f0f0f;
-  --sidebar-foreground: #d9d9d9;
-  --sidebar-primary: #2e6aff;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #000e39;
-  --sidebar-accent-foreground: #2b65ff;
-  --sidebar-border: #323e62;
-  --sidebar-ring: #2e6aff;
-  --font-sans: Open Sans, sans-serif;
+  --background: #0b141a;
+  --foreground: #e9edef;
+  --card: #1f2c34;
+  --card-foreground: #e9edef;
+  --popover: #1f2c34;
+  --popover-foreground: #e9edef;
+  --primary: #00a884;
+  --primary-foreground: #111b21;
+  --secondary: #12332a;
+  --secondary-foreground: #00a884;
+  --muted: #182229;
+  --muted-foreground: #8696a0;
+  --accent: #25d366;
+  --accent-foreground: #111b21;
+  --destructive: #ea4335;
+  --destructive-foreground: #e9edef;
+  --border: #2a3942;
+  --input: #2a3942;
+  --ring: #00a884;
+  --chart-1: #25d366;
+  --chart-2: #00a884;
+  --chart-3: #128c7e;
+  --chart-4: #34b7f1;
+  --chart-5: #075e54;
+  --sidebar: #111b21;
+  --sidebar-foreground: #e9edef;
+  --sidebar-primary: #00a884;
+  --sidebar-primary-foreground: #111b21;
+  --sidebar-accent: #12332a;
+  --sidebar-accent-foreground: #00a884;
+  --sidebar-border: #2a3942;
+  --sidebar-ring: #00a884;
+  --font-sans:
+    Segoe UI, Helvetica Neue, Helvetica, Lucida Grande, Arial, Ubuntu, Cantarell,
+    Fira Sans, sans-serif;
   --font-serif: Georgia, serif;
-  --font-mono: Menlo, monospace;
-  --radius: 1.3rem;
-  --shadow-x: -50px;
-  --shadow-y: 2px;
-  --shadow-blur: 0px;
-  --shadow-spread: -50px;
-  --shadow-opacity: 0;
-  --shadow-color: #2e6aff;
-  --shadow-2xs: -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0);
-  --shadow-xs: -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0);
+  --font-mono:
+    SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New,
+    monospace;
+  --radius: 1rem;
+  --shadow-x: 0px;
+  --shadow-y: 4px;
+  --shadow-blur: 12px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.4;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --shadow-2xs: 0px 4px 12px 0px hsl(0 0% 0% / 0.2);
+  --shadow-xs: 0px 4px 12px 0px hsl(0 0% 0% / 0.2);
   --shadow-sm:
-    -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0),
-    -50px 1px 2px -51px hsl(222.7751 100% 59.0196% / 0);
+    0px 4px 12px 0px hsl(0 0% 0% / 0.4), 0px 1px 2px -1px hsl(0 0% 0% / 0.4);
   --shadow:
-    -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0),
-    -50px 1px 2px -51px hsl(222.7751 100% 59.0196% / 0);
+    0px 4px 12px 0px hsl(0 0% 0% / 0.4), 0px 1px 2px -1px hsl(0 0% 0% / 0.4);
   --shadow-md:
-    -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0),
-    -50px 2px 4px -51px hsl(222.7751 100% 59.0196% / 0);
+    0px 4px 12px 0px hsl(0 0% 0% / 0.4), 0px 2px 4px -1px hsl(0 0% 0% / 0.4);
   --shadow-lg:
-    -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0),
-    -50px 4px 6px -51px hsl(222.7751 100% 59.0196% / 0);
+    0px 4px 12px 0px hsl(0 0% 0% / 0.4), 0px 4px 6px -1px hsl(0 0% 0% / 0.4);
   --shadow-xl:
-    -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0),
-    -50px 8px 10px -51px hsl(222.7751 100% 59.0196% / 0);
-  --shadow-2xl: -50px 2px 0px -50px hsl(222.7751 100% 59.0196% / 0);
+    0px 4px 12px 0px hsl(0 0% 0% / 0.4), 0px 8px 10px -1px hsl(0 0% 0% / 0.4);
+  --shadow-2xl: 0px 4px 12px 0px hsl(0 0% 0% / 1);
 }
 
 @theme inline {
@@ -190,4 +188,24 @@
   body {
     @apply bg-background text-foreground;
   }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+html, body {
+  overscroll-behavior: none;
 }
