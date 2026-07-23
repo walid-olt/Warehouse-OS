@@ -2,15 +2,15 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import registerAction from "@/features/auth/actions/register";
-import { registerUserSchema } from "../schemas/userSchema";
-import type { RegisterUserDto } from "../types";
+import { loginUserSchema } from "../schemas/userSchema";
+import type { LoginUserDto } from "../types";
 
-export default function RegisterForm() {
+export default function LoginForm() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const {
@@ -18,25 +18,24 @@ export default function RegisterForm() {
     formState: { errors },
     setError,
     handleSubmit,
-  } = useForm<RegisterUserDto>({
+  } = useForm<LoginUserDto>({
     reValidateMode: "onChange",
-    resolver: zodResolver(registerUserSchema),
+    resolver: zodResolver(loginUserSchema),
   });
 
-  const submitHandler = async (credentials: RegisterUserDto) => {
+  const submitHandler = async (credentials: LoginUserDto) => {
     setIsSubmitting(true);
     try {
-      const result = await registerAction(credentials);
-      if (!result.success) {
-        if (result.errors) {
-          for (const [field, message] of Object.entries(result.errors)) {
-            setError(field as keyof RegisterUserDto, { message });
-          }
-        } else {
-          setError("root", { message: result.message });
-        }
+      const result = await signIn("credentials", {
+        email: credentials.email,
+        password: credentials.password,
+        redirect: false,
+      });
+
+      if (result?.error) {
+        setError("root", { message: "Invalid email or password." });
       } else {
-        router.replace("/login");
+        router.push("/dashboard");
       }
     } finally {
       setIsSubmitting(false);
@@ -53,24 +52,6 @@ export default function RegisterForm() {
           {errors.root.message}
         </div>
       )}
-
-      <div className="flex flex-col gap-1.5">
-        <label
-          htmlFor="name"
-          className="text-xs font-medium text-muted-foreground"
-        >
-          Full name
-        </label>
-        <Input
-          id="name"
-          placeholder="Jane Doe"
-          {...register("name")}
-          aria-invalid={!!errors.name}
-        />
-        {errors.name && (
-          <p className="text-xs text-destructive">{errors.name.message}</p>
-        )}
-      </div>
 
       <div className="flex flex-col gap-1.5">
         <label
@@ -91,7 +72,7 @@ export default function RegisterForm() {
         )}
       </div>
 
-      <div className="flex flex-col gap-1.5 ">
+      <div className="flex flex-col gap-1.5">
         <label
           htmlFor="password"
           className="text-xs font-medium text-muted-foreground"
@@ -99,7 +80,7 @@ export default function RegisterForm() {
           Password
         </label>
         <Input
-          className={"py-2"}
+          className="py-2"
           id="password"
           type="password"
           placeholder="••••••••"
@@ -111,33 +92,12 @@ export default function RegisterForm() {
         )}
       </div>
 
-      <div className="flex flex-col gap-1.5">
-        <label
-          htmlFor="passwordConfirmation"
-          className="text-xs font-medium text-muted-foreground"
-        >
-          Confirm password
-        </label>
-        <Input
-          id="passwordConfirmation"
-          type="password"
-          placeholder="••••••••"
-          {...register("passwordConfirmation")}
-          aria-invalid={!!errors.passwordConfirmation}
-        />
-        {errors.passwordConfirmation && (
-          <p className="text-xs text-destructive">
-            {errors.passwordConfirmation.message}
-          </p>
-        )}
-      </div>
-
       <Button
         type="submit"
         disabled={isSubmitting}
         className="mt-2 h-11 w-full bg-accent text-accent-foreground font-semibold hover:bg-accent/90 shadow-[0_0_30px_rgba(37,211,102,0.2)]"
       >
-        {isSubmitting ? "Creating account..." : "Create Account"}
+        {isSubmitting ? "Signing in..." : "Sign In"}
       </Button>
     </form>
   );
