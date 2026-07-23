@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import mongoose, { model, Schema } from "mongoose";
+import mongoose, { type Model, model, Schema } from "mongoose";
 import type { User } from "../types/";
 
 const userSchema = new Schema<User>(
@@ -27,6 +27,6 @@ userSchema.pre("save", async function () {
 });
 
 const UserModel =
-  mongoose.model<User>("User") || model<User>("User", userSchema);
+  (mongoose.models.User as Model<User>) || model<User>("User", userSchema);
 
 export default UserModel;
