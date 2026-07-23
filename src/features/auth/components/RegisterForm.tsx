@@ -36,7 +36,8 @@ export default function RegisterForm() {
           setError("root", { message: result.message });
         }
       } else {
-        router.push("/login");
+       // router.push("/login");
+	alert("register success")
       }
     } finally {
       setIsSubmitting(false);
