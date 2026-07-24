@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import {
   JetBrains_Mono as Mono,
   Open_Sans as Sans,
-  Lora as Serif,
+  Merriweather as Serif,
 } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";

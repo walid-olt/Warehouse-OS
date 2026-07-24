@@ -1,3 +1,4 @@
+import { auth } from "@/auth";
 import { WarehouseIcon } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 
@@ -6,13 +7,17 @@ export const metadata: Metadata = {
   description: "Manage your warehouse operations.",
 };
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const session = await auth();
+
   return (
     <div className="flex min-h-screen flex-col bg-background text-foreground">
       <header className="border-b border-border">
         <nav className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-6 lg:px-8">
           <WarehouseIcon className="size-6 text-accent" weight="fill" />
-          <span className="font-serif text-lg font-bold">Distrible</span>
+          <span className="font-serif text-lg font-bold">
+            Distrible | {session?.user?.email}
+          </span>
         </nav>
       </header>
 

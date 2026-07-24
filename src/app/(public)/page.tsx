@@ -1,45 +1,11 @@
-import { ArrowRightIcon, Warehouse } from "@phosphor-icons/react/dist/ssr";
-import Image from "next/image";
+import { ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Button } from "@/components/ui/button";
-
-function Navbar() {
-  return (
-    <header className="fixed top-0 right-0 left-0 z-50 border-b border-border bg-background/80 backdrop-blur-lg">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/distrible.svg"
-            alt="Distrible"
-            width={120}
-            height={38}
-            priority
-            className="dark:invert"
-          />
-        </Link>
-
-        <div className="flex items-center gap-2">
-          <ThemeSwitcher />
-          <Button
-            nativeButton={false}
-            render={<Link href="/register" />}
-            variant="default"
-            size="sm"
-          >
-            Start for Free
-            <ArrowRightIcon className="size-4" weight="bold" />
-          </Button>
-        </div>
-      </nav>
-    </header>
-  );
-}
 
 function GridPattern() {
   return (
     <div
-      className="pointer-events-none absolute inset-0 opacity-[0.03] dark:opacity-[0.04]"
+      className="pointer-events-none absolute inset-0 opacity-[0.03]"
       style={{
         backgroundImage:
           "linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(90deg, var(--foreground) 1px, transparent 1px)",
@@ -52,8 +18,6 @@ function GridPattern() {
 export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-background text-foreground">
-      <Navbar />
-
       <section className="relative flex min-h-screen flex-col items-center justify-center px-6 pt-16">
         <GridPattern />
 
@@ -93,24 +57,8 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="pointer-events-none absolute bottom-0 left-0 h-40 w-full bg-gradient-to-t from-background to-transparent" />
+        <div className="pointer-events-none absolute bottom-0 left-0 h-40 w-full bg-linear-to-t from-background to-transparent" />
       </section>
-
-      {/* Footer */}
-      <footer className="border-t border-border py-8">
-        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
-          <Image
-            src="/distrible.svg"
-            alt="Distrible"
-            width={100}
-            height={32}
-            className="opacity-40 grayscale dark:invert"
-          />
-          <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Distrible. All rights reserved.
-          </p>
-        </div>
-      </footer>
     </div>
   );
 }
