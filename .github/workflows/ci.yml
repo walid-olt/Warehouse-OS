@@ -16,22 +16,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: 'pnpm'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --config.onlyBuiltDependencies='["sharp","esbuild","@swc/core"]'
+        run: npm ci --legacy-peer-deps
 
       - name: Run tests
-        run: pnpm test
+        run: npm test
 
   build:
     name: Build Next.js
@@ -42,23 +37,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-          
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: 'pnpm'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --config.onlyBuiltDependencies='["sharp","esbuild","@swc/core"]'
+        run: npm ci --legacy-peer-deps
 
       - name: Build Next.js App
-        run: pnpm run build
+        run: npm run build
         env:
           # Pass dummy env variables (might be required at build-time)
           AUTH_SECRET: "ci-build-secret"
