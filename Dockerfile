@@ -24,7 +24,7 @@ RUN --mount=type=cache,target=/root/.npm \
   elif [ -f yarn.lock ]; then \
   corepack enable yarn && yarn install --frozen-lockfile --production=false; \
   elif [ -f pnpm-lock.yaml ]; then \
-  corepack enable pnpm && pnpm install --frozen-lockfile --config.onlyBuiltDependencies='["sharp","esbuild","@swc/core"]'; \
+  corepack enable pnpm && pnpm install --frozen-lockfile ; \
   else \
   echo "No lockfile found." && exit 1; \
   fi
