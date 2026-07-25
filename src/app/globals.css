@@ -42,7 +42,7 @@
   --font-mono:
     SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New,
     monospace;
-  --radius: 1rem;
+  --radius: 0.5rem;
   --shadow-x: 0px;
   --shadow-y: 2px;
   --shadow-blur: 10px;
@@ -206,6 +206,7 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-html, body {
+html,
+body {
   overscroll-behavior: none;
 }

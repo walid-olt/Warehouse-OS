@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -12,10 +11,9 @@ import type { LoginUserDto } from "../types";
 
 export default function LoginForm() {
   const router = useRouter();
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const {
     register,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     setError,
     handleSubmit,
   } = useForm<LoginUserDto>({
@@ -24,7 +22,6 @@ export default function LoginForm() {
   });
 
   const submitHandler = async (credentials: LoginUserDto) => {
-    setIsSubmitting(true);
     try {
       const result = await signIn("credentials", {
         email: credentials.email,
@@ -37,8 +34,8 @@ export default function LoginForm() {
       } else {
         router.push("/dashboard");
       }
-    } finally {
-      setIsSubmitting(false);
+    } catch (e) {
+      console.error(e);
     }
   };
 
@@ -95,7 +92,7 @@ export default function LoginForm() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="mt-2 h-11 w-full bg-accent text-accent-foreground font-semibold hover:bg-accent/90 shadow-[0_0_30px_rgba(37,211,102,0.2)]"
+        className="mt-2 h-11 w-full bg-accent text-accent-foreground font-semibold hover:bg-accent/90 shadow-[0_0_30px_theme(--accent/0.2)]"
       >
         {isSubmitting ? "Signing in..." : "Sign In"}
       </Button>
