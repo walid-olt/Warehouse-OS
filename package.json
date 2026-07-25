@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "docker compose up -d && next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "biome check",
-    "format": "biome format --write"
+    "format": "biome format --write --fix"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

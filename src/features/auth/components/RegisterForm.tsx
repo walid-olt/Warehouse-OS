@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {Label} from "@/components/ui/label";
 import registerAction from "@/features/auth/actions/register";
 import { registerUserSchema } from "../schemas/userSchema";
 import type { RegisterUserDto } from "../types";
@@ -49,18 +50,18 @@ export default function RegisterForm() {
       className="flex flex-col gap-4"
     >
       {errors.root && (
-        <div className="rounded-lg border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+        <div className="rounded-(--radius) border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
           {errors.root.message}
         </div>
       )}
 
       <div className="flex flex-col gap-1.5">
-        <label
+        <Label
           htmlFor="name"
-          className="text-xs font-medium text-muted-foreground"
+          className="text-xs font-medium "
         >
           Full name
-        </label>
+        </Label>
         <Input
           id="name"
           placeholder="Jane Doe"
@@ -73,12 +74,12 @@ export default function RegisterForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label
+        <Label
           htmlFor="email"
-          className="text-xs font-medium text-muted-foreground"
+          className="text-xs font-medium "
         >
           Work email
-        </label>
+        </Label>
         <Input
           id="email"
           type="email"
@@ -92,12 +93,12 @@ export default function RegisterForm() {
       </div>
 
       <div className="flex flex-col gap-1.5 ">
-        <label
+        <Label
           htmlFor="password"
-          className="text-xs font-medium text-muted-foreground"
+          className="text-xs font-medium "
         >
           Password
-        </label>
+        </Label>
         <Input
           className={"py-2"}
           id="password"
@@ -112,12 +113,12 @@ export default function RegisterForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label
+        <Label
           htmlFor="passwordConfirmation"
-          className="text-xs font-medium text-muted-foreground"
+          className="text-xs font-medium "
         >
           Confirm password
-        </label>
+        </Label>
         <Input
           id="passwordConfirmation"
           type="password"
@@ -135,7 +136,7 @@ export default function RegisterForm() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="mt-2 h-11 w-full bg-accent text-accent-foreground font-semibold hover:bg-accent/90 shadow-[0_0_30px_rgba(37,211,102,0.2)]"
+        className="mt-2 h-11 w-full bg-accent text-accent-foreground font-semibold hover:bg-accent/90 shadow-[0_0_30px_theme(--accent/0.2)]"
       >
         {isSubmitting ? "Creating account..." : "Create Account"}
       </Button>

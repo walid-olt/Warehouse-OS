@@ -92,7 +92,7 @@ export default function LoginForm() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="mt-2 h-11 w-full bg-accent text-accent-foreground font-semibold hover:bg-accent/90 shadow-[0_0_30px_rgba(37,211,102,0.2)]"
+        className="mt-2 h-11 w-full bg-accent text-accent-foreground font-semibold hover:bg-accent/90 shadow-[0_0_30px_theme(--accent/0.2)]"
       >
         {isSubmitting ? "Signing in..." : "Sign In"}
       </Button>

@@ -1,19 +1,7 @@
 import { ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-
-function GridPattern() {
-  return (
-    <div
-      className="pointer-events-none absolute inset-0 opacity-[0.03]"
-      style={{
-        backgroundImage:
-          "linear-gradient(var(--foreground) 1px, transparent 1px), linear-gradient(90deg, var(--foreground) 1px, transparent 1px)",
-        backgroundSize: "60px 60px",
-      }}
-    />
-  );
-}
+import GridPattern from "@/components/GridPattern";
 
 export default function Home() {
   return (
@@ -22,7 +10,7 @@ export default function Home() {
         <GridPattern />
 
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <h1 className="hero-anim-2 font-serif text-5xl leading-[1.08] font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
+          <h1 className="hero-anim-2 text-5xl leading-[1.08] font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
             Your warehouse,{" "}
             <span className="bg-linear-to-r from-accent to-primary bg-clip-text text-transparent">
               fully under control
@@ -42,17 +30,8 @@ export default function Home() {
               size="lg"
               className="bg-accent text-accent-foreground hover:bg-accent/90 px-8 text-base font-semibold shadow-[0_0_40px_theme(--accent/0.25)]"
             >
-              Get Started — It's Free
+              Get Started
               <ArrowRightIcon className="size-5" weight="bold" />
-            </Button>
-            <Button
-              nativeButton={false}
-              render={<Link href="#features" />}
-              variant="ghost"
-              size="lg"
-              className="text-muted-foreground hover:text-foreground text-base"
-            >
-              See how it works
             </Button>
           </div>
         </div>
