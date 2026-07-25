@@ -28,7 +28,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --config.onlyBuiltDependencies='["sharp","esbuild","@swc/core"]'
 
       - name: Run tests
         run: pnpm test
@@ -55,7 +55,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --config.onlyBuiltDependencies='["sharp","esbuild","@swc/core"]'
 
       - name: Build Next.js App
         run: pnpm run build
