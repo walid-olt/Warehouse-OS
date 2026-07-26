@@ -31,7 +31,7 @@ describe("LoginForm Component", () => {
     expect(screen.getByLabelText(/work email/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: /sign in/i })
+      screen.getByRole("button", { name: /sign in/i }),
     ).toBeInTheDocument();
   });
 
@@ -63,7 +63,7 @@ describe("LoginForm Component", () => {
 
     // Check that root error message is rendered
     expect(
-      await screen.findByText(/invalid email or password/i)
+      await screen.findByText(/invalid email or password/i),
     ).toBeInTheDocument();
     expect(mockPush).not.toHaveBeenCalled();
   });
@@ -90,4 +90,4 @@ describe("LoginForm Component", () => {
       expect(mockPush).toHaveBeenCalledWith("/dashboard");
     });
   });
-}); 
+});

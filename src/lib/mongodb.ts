@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 
-
-
 interface MongooseCache {
   conn: typeof mongoose | null;
   promise: Promise<typeof mongoose> | null;
@@ -25,14 +23,13 @@ if (!global.mongooseCache) {
  * Ensures a connection to MongoDB exists before model operations run.
  */
 export async function connectDB(): Promise<typeof mongoose> {
-
   // usually, we should throw before even trying to connect to the db,
   // but we'll do it here to make sure the tests pass if the environment variable is missing
-if (!process.env.MONGODB_URI) {
-  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
-}
+  if (!process.env.MONGODB_URI) {
+    throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
+  }
 
-const MONGODB_URI = process.env.MONGODB_URI;
+  const MONGODB_URI = process.env.MONGODB_URI;
   if (cached.conn) {
     return cached.conn;
   }
