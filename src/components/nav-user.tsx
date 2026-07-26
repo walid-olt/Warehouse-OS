@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/sidebar";
 import { getInitials } from "@/lib/utils";
 import { CaretUpDownIcon, SignOutIcon } from "@phosphor-icons/react";
-import { useSession } from "next-auth/react";
+import { useSession ,signOut} from "next-auth/react";
 
 export function NavUser() {
 
@@ -32,7 +32,10 @@ if(status === "unauthenticated" || !data?.user) {
   }
   const user = data.user
 
-  // const logout = ()=>signOut({redirectTo:"/login"})
+  const logout = async ()=>{
+    await signOut({redirect:true,redirectTo:"/login"})
+    return
+  }
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -73,7 +76,7 @@ if(status === "unauthenticated" || !data?.user) {
             <DropdownMenuSeparator />
 
             <DropdownMenuSeparator />
-            <DropdownMenuItem >
+            <DropdownMenuItem onClick={logout}>
               <SignOutIcon />
               Log out
             </DropdownMenuItem>
