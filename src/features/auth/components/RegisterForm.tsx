@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import {Label} from "@/components/ui/label";
+import { Label } from "@/components/ui/label";
 import registerAction from "@/features/auth/actions/register";
 import { registerUserSchema } from "../schemas/userSchema";
 import type { RegisterUserDto } from "../types";
@@ -56,10 +56,7 @@ export default function RegisterForm() {
       )}
 
       <div className="flex flex-col gap-1.5">
-        <Label
-          htmlFor="name"
-          className="text-xs font-medium "
-        >
+        <Label htmlFor="name" className="text-xs font-medium ">
           Full name
         </Label>
         <Input
@@ -74,10 +71,7 @@ export default function RegisterForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <Label
-          htmlFor="email"
-          className="text-xs font-medium "
-        >
+        <Label htmlFor="email" className="text-xs font-medium ">
           Work email
         </Label>
         <Input
@@ -93,10 +87,7 @@ export default function RegisterForm() {
       </div>
 
       <div className="flex flex-col gap-1.5 ">
-        <Label
-          htmlFor="password"
-          className="text-xs font-medium "
-        >
+        <Label htmlFor="password" className="text-xs font-medium ">
           Password
         </Label>
         <Input
@@ -113,10 +104,7 @@ export default function RegisterForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <Label
-          htmlFor="passwordConfirmation"
-          className="text-xs font-medium "
-        >
+        <Label htmlFor="passwordConfirmation" className="text-xs font-medium ">
           Confirm password
         </Label>
         <Input

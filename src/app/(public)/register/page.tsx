@@ -31,10 +31,7 @@ export default function RegisterPage() {
 
         <div className="rounded-(--radius) border  shadow-card-foreground shadow-2xl bg-card p-8 sm:p-10">
           <div className="mb-8 flex flex-col ">
-            
-            <h1 className="text-2xl font-bold">
-              Create your account
-            </h1>
+            <h1 className="text-2xl font-bold">Create your account</h1>
           </div>
 
           <RegisterForm />
