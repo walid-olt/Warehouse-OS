@@ -40,6 +40,7 @@ export function NavUser() {
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger
+            className="mx-auto"
             render={
               <SidebarMenuButton size="lg" className="aria-expanded:bg-muted" />
             }

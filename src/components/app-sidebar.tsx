@@ -36,7 +36,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 )}
               ></SidebarMenuButton>
             ) : (
-              <SidebarMenuButton size="lg" className="pointer-events-none">
+              <SidebarMenuButton
+                size="lg"
+                className="pointer-events-none mx-auto"
+              >
                 <CaretDoubleUpIcon
                   size={32}
                   fill="#25D366"
