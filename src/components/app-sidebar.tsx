@@ -41,9 +41,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 className="pointer-events-none mx-auto"
               >
                 <CaretDoubleUpIcon
-                  size={32}
+                  size={48}
                   fill="#25D366"
-                  className="rotate-45 m-auto"
+                  className="rotate-45 m-auto scale-125 "
                 />
               </SidebarMenuButton>
             )}
