@@ -14,17 +14,17 @@ import {
 } from "@/components/ui/sidebar";
 import { CaretDoubleUpIcon } from "@phosphor-icons/react/dist/ssr";
 import { ThemeSwitcher } from "./theme-switcher";
-
+import { DashboardNav } from "@/features/dashboard/components/Dashboard-nav";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { state } = useSidebar();
+  const { state, isMobile } = useSidebar();
 
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            {state === "expanded" ? (
+            {state === "expanded" || isMobile ? (
               <SidebarMenuButton
                 size="lg"
                 render={() => (
@@ -36,7 +36,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 )}
               ></SidebarMenuButton>
             ) : (
-              <SidebarMenuButton size="lg" className="rounded-(--radius)">
+              <SidebarMenuButton size="lg" className="pointer-events-none">
                 <CaretDoubleUpIcon
                   size={32}
                   fill="#25D366"
@@ -47,7 +47,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent></SidebarContent>
+      <SidebarContent>
+        <SidebarMenu>
+          <DashboardNav />
+        </SidebarMenu>
+      </SidebarContent>
       <SidebarFooter>
         <NavUser />
       </SidebarFooter>
