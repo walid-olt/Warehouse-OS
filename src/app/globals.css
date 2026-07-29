@@ -13,10 +13,10 @@
   --primary-foreground: #ffffff;
   --secondary: #e7f8f0;
   --secondary-foreground: #075e54;
-  --muted: #f0f2f5;
+  --muted: #e8eaee;
   --muted-foreground: #667781;
   --accent: #25d366;
-  --accent-foreground: #ffffff;
+  --accent-foreground: #111b21;
   --destructive: #ea4335;
   --destructive-foreground: #ffffff;
   --border: #e9edef;
@@ -106,7 +106,6 @@
   --font-mono:
     SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New,
     monospace;
-  --radius: 1rem;
   --shadow-x: 0px;
   --shadow-y: 4px;
   --shadow-blur: 12px;
