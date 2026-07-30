@@ -1,8 +1,8 @@
 import { ArrowLeftIcon } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 import Link from "next/link";
-import LoginForm from "@/features/auth/components/LoginForm";
 import GridPattern from "@/components/GridPattern";
+import LoginForm from "@/features/auth/components/LoginForm";
 
 export const metadata: Metadata = {
   title: "Sign In — Distrible",

@@ -1,7 +1,7 @@
 import { ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import GridPattern from "@/components/GridPattern";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (

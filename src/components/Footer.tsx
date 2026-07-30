@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 function Footer() {
   return (
     <footer className="border-t border-border py-8">

@@ -1,6 +1,8 @@
 "use client";
 
-import { Avatar, AvatarFallback, } from "@/components/ui/avatar";
+import { CaretUpDownIcon, SignOutIcon } from "@phosphor-icons/react";
+import { signOut, useSession } from "next-auth/react";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -14,33 +16,31 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
 } from "@/components/ui/sidebar";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { getInitials } from "@/lib/utils";
-import { CaretUpDownIcon, SignOutIcon } from "@phosphor-icons/react";
-import { useSession ,signOut} from "next-auth/react";
 
 export function NavUser() {
+  const isMobile = useIsMobile();
+  const { data, status } = useSession();
+  if (status === "loading") return null;
 
-  const { isMobile } = useSidebar();
-  const {data, status}= useSession()
-  if(status==="loading") return null
-
-if(status === "unauthenticated" || !data?.user) {
-    window.location.href = "/login"
-    return
+  if (status === "unauthenticated" || !data?.user) {
+    window.location.href = "/login";
+    return;
   }
-  const user = data.user
+  const user = data.user;
 
-  const logout = async ()=>{
-    await signOut({redirect:true,redirectTo:"/login"})
-    return
-  }
+  const logout = async () => {
+    await signOut({ redirect: true, redirectTo: "/login" });
+    return;
+  };
   return (
     <SidebarMenu>
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger
+            className="mx-auto"
             render={
               <SidebarMenuButton size="lg" className="aria-expanded:bg-muted" />
             }
@@ -73,7 +73,6 @@ if(status === "unauthenticated" || !data?.user) {
                 </div>
               </DropdownMenuLabel>
             </DropdownMenuGroup>
-            <DropdownMenuSeparator />
 
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={logout}>

@@ -4,7 +4,9 @@ import {
   Open_Sans as Sans,
   Merriweather as Serif,
 } from "next/font/google";
+import { Providers } from "@/components/providers";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 
 const fontSans = Sans({
@@ -48,12 +50,15 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         {/* biome-ignore lint/security/noDangerouslySetInnerHtml: inline theme init script, no user input */}
-        {/* <script dangerouslySetInnerHTML={{ __html: themeScript }} /> */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body
         className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}
       >
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <Providers>{children}</Providers>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

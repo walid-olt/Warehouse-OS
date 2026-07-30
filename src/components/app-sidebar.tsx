@@ -1,6 +1,7 @@
 "use client";
-import { NavUser } from "@/components/nav-user";
+import { CaretDoubleUpIcon } from "@phosphor-icons/react/dist/ssr";
 import { Logo } from "@/components/logo";
+import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -12,19 +13,18 @@ import {
   SidebarRail,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { CaretDoubleUpIcon } from "@phosphor-icons/react/dist/ssr";
+import { DashboardNav } from "@/features/dashboard/components/Dashboard-nav";
 import { ThemeSwitcher } from "./theme-switcher";
 
-
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { state } = useSidebar();
+  const { state, isMobile } = useSidebar();
 
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            {state === "expanded" ? (
+            {state === "expanded" || isMobile ? (
               <SidebarMenuButton
                 size="lg"
                 render={() => (
@@ -36,18 +36,25 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 )}
               ></SidebarMenuButton>
             ) : (
-              <SidebarMenuButton size="lg" className="rounded-(--radius)">
+              <SidebarMenuButton
+                size="lg"
+                className="pointer-events-none mx-auto"
+              >
                 <CaretDoubleUpIcon
-                  size={32}
+                  size={48}
                   fill="#25D366"
-                  className="rotate-45 m-auto"
+                  className="rotate-45 m-auto scale-125 "
                 />
               </SidebarMenuButton>
             )}
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent></SidebarContent>
+      <SidebarContent>
+        <SidebarMenu>
+          <DashboardNav />
+        </SidebarMenu>
+      </SidebarContent>
       <SidebarFooter>
         <NavUser />
       </SidebarFooter>
