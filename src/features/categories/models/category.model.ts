@@ -6,9 +6,8 @@ const categoryMongooseSchema = new Schema<Category>(
     name: { type: String, required: true, trim: true },
     description: { type: String, default: "" },
     isArchived: { type: Boolean, default: false },
-    createdAt: { type: Date, default: Date.now },
   },
-  { timestamps: { createdAt: true, updatedAt: false } },
+  { timestamps: true },
 );
 
 export const CategoryModel =
