@@ -35,7 +35,7 @@ export default function LoginForm() {
       } else {
         toast.success("Welcome back!", {
           description: "You've been signed in successfully.",
-        })
+        });
         router.push("/dashboard");
       }
     } catch (e) {

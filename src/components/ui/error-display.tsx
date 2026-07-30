@@ -1,19 +1,26 @@
-"use client"
+"use client";
 
-import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert"
-import { Empty, EmptyHeader, EmptyTitle, EmptyDescription, EmptyMedia, EmptyContent } from "@/components/ui/empty"
-import { Button } from "@/components/ui/button"
-import { WarningCircle, SmileySad, WifiSlash } from "@phosphor-icons/react"
-import { cn } from "@/lib/utils"
-import type React from "react"
+import { SmileySad, WarningCircle, WifiSlash } from "@phosphor-icons/react";
+import type React from "react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
+import { cn } from "@/lib/utils";
 
 interface ErrorScreenProps {
-  title?: string
-  message?: string
-  variant?: "default" | "destructive" | "network"
-  onRetry?: () => void
-  retryLabel?: string
-  className?: string
+  title?: string;
+  message?: string;
+  variant?: "default" | "destructive" | "network";
+  onRetry?: () => void;
+  retryLabel?: string;
+  className?: string;
 }
 
 const variantMap = {
@@ -32,7 +39,7 @@ const variantMap = {
     title: "Connection lost",
     message: "Please check your internet connection and try again.",
   },
-}
+};
 
 function ErrorScreen({
   title,
@@ -42,8 +49,8 @@ function ErrorScreen({
   retryLabel = "Try again",
   className,
 }: ErrorScreenProps) {
-  const config = variantMap[variant]
-  const Icon = config.icon
+  const config = variantMap[variant];
+  const Icon = config.icon;
 
   return (
     <Empty className={cn("min-h-[300px]", className)}>
@@ -62,13 +69,13 @@ function ErrorScreen({
         </EmptyContent>
       )}
     </Empty>
-  )
+  );
 }
 
 interface InlineErrorProps {
-  title?: string
-  message: string
-  className?: string
+  title?: string;
+  message: string;
+  className?: string;
 }
 
 function InlineError({ title, message, className }: InlineErrorProps) {
@@ -78,7 +85,7 @@ function InlineError({ title, message, className }: InlineErrorProps) {
       <AlertTitle>{title ?? "Error"}</AlertTitle>
       <AlertDescription>{message}</AlertDescription>
     </Alert>
-  )
+  );
 }
 
-export { ErrorScreen, InlineError }
+export { ErrorScreen, InlineError };

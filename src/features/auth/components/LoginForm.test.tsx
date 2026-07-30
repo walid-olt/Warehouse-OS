@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { vi, describe, it, expect, beforeEach } from "vitest";
+import { signIn } from "next-auth/react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import LoginForm from "./LoginForm";
 
 // 1. Mock Next.js navigation

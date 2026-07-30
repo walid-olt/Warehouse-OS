@@ -1,13 +1,19 @@
-"use client"
+"use client";
 
-import { Empty, EmptyHeader, EmptyTitle, EmptyDescription, EmptyMedia } from "@/components/ui/empty"
-import { SpinnerIcon } from "@phosphor-icons/react"
-import { cn } from "@/lib/utils"
+import { SpinnerIcon } from "@phosphor-icons/react";
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
+import { cn } from "@/lib/utils";
 
 interface LoadingScreenProps {
-  label?: string
-  description?: string
-  className?: string
+  label?: string;
+  description?: string;
+  className?: string;
 }
 
 function LoadingScreen({
@@ -22,12 +28,10 @@ function LoadingScreen({
           <SpinnerIcon className="size-5 animate-spin" />
         </EmptyMedia>
         <EmptyTitle>{label}</EmptyTitle>
-        {description && (
-          <EmptyDescription>{description}</EmptyDescription>
-        )}
+        {description && <EmptyDescription>{description}</EmptyDescription>}
       </EmptyHeader>
     </Empty>
-  )
+  );
 }
 
-export { LoadingScreen }
+export { LoadingScreen };

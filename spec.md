@@ -28,6 +28,7 @@ _Create these first so your API and Forms know what data to expect._
 - [ ] **Category Model**
 - `name` (String)
 - `description` (String)
+- isArchived:(Boolean)
 - `createdAt` (Date)
 
 - [ ] **Product Model**

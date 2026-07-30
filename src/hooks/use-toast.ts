@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { toast } from "sonner"
+import { toast } from "sonner";
 
-export { toast }
+export { toast };
 
 export function useToast() {
   return {
@@ -15,5 +15,5 @@ export function useToast() {
     error: toast.error,
     info: toast.info,
     warning: toast.warning,
-  }
+  };
 }

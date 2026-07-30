@@ -1,11 +1,11 @@
-import { Category } from "@/types/category";
-
-import mongoose, { Model, Schema, model } from "mongoose";
+import mongoose, { type Model, model, Schema } from "mongoose";
+import type { Category } from "@/types/category";
 
 const categoryMongooseSchema = new Schema<Category>(
   {
     name: { type: String, required: true, trim: true },
     description: { type: String, default: "" },
+    isArchived: { type: Boolean, default: false },
     createdAt: { type: Date, default: Date.now },
   },
   { timestamps: { createdAt: true, updatedAt: false } },

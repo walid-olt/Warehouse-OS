@@ -1,14 +1,14 @@
+import { redirect } from "next/navigation";
+import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
 import { AppSidebar } from "@/components/app-sidebar";
 import { DynamicBreadcrumb } from "@/components/dynamic-breadcrumb";
 import {
-  SidebarProvider,
   SidebarInset,
+  SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { SessionProvider } from "next-auth/react";
-import { redirect } from "next/navigation";
 
 export default async function ({
   children,
@@ -31,7 +31,7 @@ export default async function ({
                 <DynamicBreadcrumb />
               </div>
             </header>
-            {children}
+            <div className="px-4">{children}</div>
           </SidebarInset>
         </SidebarProvider>
       </TooltipProvider>

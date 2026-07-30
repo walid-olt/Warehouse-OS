@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "@phosphor-icons/react/dist/ssr";
-import { ThemeSwitcher } from "./theme-switcher";
-import { Logo } from "./logo";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Logo } from "./logo";
+import { ThemeSwitcher } from "./theme-switcher";
 
 export default function Navbar() {
   return (

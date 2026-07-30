@@ -1,5 +1,7 @@
 "use client";
 
+import { CaretUpDownIcon, SignOutIcon } from "@phosphor-icons/react";
+import { signOut, useSession } from "next-auth/react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -17,8 +19,6 @@ import {
 } from "@/components/ui/sidebar";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { getInitials } from "@/lib/utils";
-import { CaretUpDownIcon, SignOutIcon } from "@phosphor-icons/react";
-import { useSession, signOut } from "next-auth/react";
 
 export function NavUser() {
   const isMobile = useIsMobile();

@@ -6,7 +6,7 @@ export type ApiSuccessResponse<T> = {
     page?: number;
     limit?: number;
     total?: number;
-    [key: string]: any;
+    [key: string]: unknown;
   };
 };
 
@@ -15,7 +15,7 @@ export type ApiErrorResponse = {
   error: {
     code: string;
     message: string;
-    details?: any;
+    details?: unknown;
   };
 };
 

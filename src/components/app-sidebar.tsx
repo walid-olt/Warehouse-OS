@@ -1,6 +1,7 @@
 "use client";
-import { NavUser } from "@/components/nav-user";
+import { CaretDoubleUpIcon } from "@phosphor-icons/react/dist/ssr";
 import { Logo } from "@/components/logo";
+import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
@@ -12,9 +13,8 @@ import {
   SidebarRail,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { CaretDoubleUpIcon } from "@phosphor-icons/react/dist/ssr";
-import { ThemeSwitcher } from "./theme-switcher";
 import { DashboardNav } from "@/features/dashboard/components/Dashboard-nav";
+import { ThemeSwitcher } from "./theme-switcher";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { state, isMobile } = useSidebar();

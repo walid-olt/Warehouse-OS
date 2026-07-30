@@ -1,8 +1,9 @@
-import { NextResponse } from "next/server";
-import { ApiSuccessResponse, ApiErrorResponse } from "@/types/api";
 import { type ClassValue, clsx } from "clsx";
+import { NextResponse } from "next/server";
 import { twMerge } from "tailwind-merge";
 import type { ZodError } from "zod";
+import type { ApiErrorResponse, ApiSuccessResponse } from "@/types/api";
+import type { ErrorCode } from "@/types/errors";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -56,7 +57,7 @@ export function successResponse<T>(
  * Returns a standardized error response.
  */
 export function errorResponse(
-  code: string,
+  code: ErrorCode,
   message: string,
   status: number = 400,
   details?: any,

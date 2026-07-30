@@ -1,10 +1,8 @@
-import { StockMovement } from "@/types/stock-movements";
-import mongoose, { Schema, model, Types, Model } from "mongoose";
+import mongoose, { type Model, model, Schema, type Types } from "mongoose";
+import type { StockMovement } from "@/types/stock-movements";
 
-export interface IStockMovementDocument extends Omit<
-  StockMovement,
-  "productId" | "_id"
-> {
+export interface IStockMovementDocument
+  extends Omit<StockMovement, "productId" | "_id"> {
   _id?: Types.ObjectId;
   productId: Types.ObjectId;
 }

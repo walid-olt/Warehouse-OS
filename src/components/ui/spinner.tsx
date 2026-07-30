@@ -1,44 +1,35 @@
-import { cn } from "@/lib/utils"
-import { cva, type VariantProps } from "class-variance-authority"
-import { SpinnerIcon } from "@phosphor-icons/react"
+import { SpinnerIcon } from "@phosphor-icons/react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
-const spinnerVariants = cva(
-  "animate-spin text-muted-foreground",
-  {
-    variants: {
-      size: {
-        sm: "size-4",
-        default: "size-5",
-        lg: "size-8",
-        xl: "size-12",
-      },
-      variant: {
-        default: "text-muted-foreground",
-        primary: "text-primary",
-        accent: "text-accent",
-        destructive: "text-destructive",
-      },
+const spinnerVariants = cva("animate-spin text-muted-foreground", {
+  variants: {
+    size: {
+      sm: "size-4",
+      default: "size-5",
+      lg: "size-8",
+      xl: "size-12",
     },
-    defaultVariants: {
-      size: "default",
-      variant: "default",
+    variant: {
+      default: "text-muted-foreground",
+      primary: "text-primary",
+      accent: "text-accent",
+      destructive: "text-destructive",
     },
   },
-)
+  defaultVariants: {
+    size: "default",
+    variant: "default",
+  },
+});
 
 interface SpinnerProps
   extends React.ComponentPropsWithoutRef<"svg">,
     VariantProps<typeof spinnerVariants> {
-  label?: string
+  label?: string;
 }
 
-function Spinner({
-  className,
-  size,
-  variant,
-  label,
-  ...props
-}: SpinnerProps) {
+function Spinner({ className, size, variant, label, ...props }: SpinnerProps) {
   return (
     <span className="inline-flex items-center gap-2" role="status">
       <SpinnerIcon
@@ -46,22 +37,17 @@ function Spinner({
         className={cn(spinnerVariants({ size, variant, className }))}
         {...props}
       />
-      {label && (
-        <span className="text-sm text-muted-foreground">{label}</span>
-      )}
+      {label && <span className="text-sm text-muted-foreground">{label}</span>}
     </span>
-  )
+  );
 }
 
 interface PageLoaderProps {
-  className?: string
-  label?: string
+  className?: string;
+  label?: string;
 }
 
-function PageLoader({
-  className,
-  label = "Loading...",
-}: PageLoaderProps) {
+function PageLoader({ className, label = "Loading..." }: PageLoaderProps) {
   return (
     <div
       data-slot="page-loader"
@@ -71,22 +57,17 @@ function PageLoader({
       )}
     >
       <Spinner size="xl" variant="primary" />
-      {label && (
-        <p className="text-sm text-muted-foreground">{label}</p>
-      )}
+      {label && <p className="text-sm text-muted-foreground">{label}</p>}
     </div>
-  )
+  );
 }
 
 interface LoadingOverlayProps {
-  className?: string
-  label?: string
+  className?: string;
+  label?: string;
 }
 
-function LoadingOverlay({
-  className,
-  label,
-}: LoadingOverlayProps) {
+function LoadingOverlay({ className, label }: LoadingOverlayProps) {
   return (
     <div
       data-slot="loading-overlay"
@@ -97,7 +78,7 @@ function LoadingOverlay({
     >
       <Spinner size="xl" variant="primary" label={label} />
     </div>
-  )
+  );
 }
 
-export { Spinner, PageLoader, LoadingOverlay }
+export { Spinner, PageLoader, LoadingOverlay };

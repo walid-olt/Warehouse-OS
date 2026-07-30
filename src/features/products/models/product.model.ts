@@ -1,5 +1,5 @@
-import { Product } from "@/types/product";
-import mongoose, { Model, Schema, model, Types } from "mongoose";
+import mongoose, { type Model, model, Schema, type Types } from "mongoose";
+import type { Product } from "@/types/product";
 
 export interface IProductDocument extends Omit<Product, "category" | "_id"> {
   _id?: Types.ObjectId;
