@@ -1,9 +1,9 @@
 "use client";
 
 import {
-  Archive,
-  ArrowCounterClockwise,
-  Plus,
+  ArchiveIcon,
+  ArrowCounterClockwiseIcon,
+  PlusIcon,
   SpinnerIcon,
 } from "@phosphor-icons/react";
 import { useState } from "react";
@@ -33,7 +33,6 @@ import { Large, Muted, Subheading } from "@/components/ui/typography";
 import { useEditableMutation } from "@/hooks/useEditableMutation";
 import { cn } from "@/lib/utils";
 import {
-  useArchiveCategory,
   useCategories,
   useCreateCategory,
   useUpdateCategoryField,
@@ -44,7 +43,7 @@ function AddCategoryForm({ onSuccess }: { onSuccess: () => void }) {
   const [description, setDescription] = useState("");
   const createCategory = useCreateCategory();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
     if (!name.trim()) return;
     await createCategory.mutateAsync({
@@ -95,7 +94,7 @@ function AddCategoryForm({ onSuccess }: { onSuccess: () => void }) {
         {createCategory.isPending ? (
           <SpinnerIcon className="size-4 animate-spin" />
         ) : (
-          <Plus className="size-4" />
+          <PlusIcon className="size-4" />
         )}
         Add
       </Button>
@@ -115,7 +114,6 @@ function CategoryRow({
   };
 }) {
   const updateField = useUpdateCategoryField(category._id);
-  const archiveMutation = useArchiveCategory();
 
   const nameMutation = useEditableMutation({
     queryKey: ["categories"],
@@ -133,7 +131,7 @@ function CategoryRow({
   });
 
   const handleArchiveToggle = async () => {
-    await archiveMutation.mutateAsync(category._id);
+    await updateField.mutateAsync({ isArchived: !category.isArchived });
   };
 
   return (
@@ -141,14 +139,14 @@ function CategoryRow({
       data-state={category.isArchived ? "archived" : "active"}
       className={cn(category.isArchived && "opacity-50")}
     >
-      <TableCell className="min-w-[180px]">
+      <TableCell className="min-w-45">
         <EditableField
           value={category.name}
           {...nameMutation.fieldProps}
           validate={(v) => (!v.trim() ? "Name is required" : null)}
         />
       </TableCell>
-      <TableCell className="min-w-[250px]">
+      <TableCell className="min-w-62.5">
         <EditableField
           value={category.description}
           {...descMutation.fieldProps}
@@ -160,7 +158,7 @@ function CategoryRow({
         <Checkbox
           checked={category.isArchived}
           onCheckedChange={handleArchiveToggle}
-          disabled={archiveMutation.isPending}
+          disabled={updateField.isPending}
         />
       </TableCell>
       <TableCell className="w-32 whitespace-nowrap text-muted-foreground">
@@ -171,15 +169,15 @@ function CategoryRow({
           variant="ghost"
           size="icon-sm"
           onClick={handleArchiveToggle}
-          disabled={archiveMutation.isPending}
+          disabled={updateField.isPending}
           title={category.isArchived ? "Unarchive" : "Archive"}
         >
-          {archiveMutation.isPending ? (
+          {updateField.isPending ? (
             <SpinnerIcon className="size-4 animate-spin" />
           ) : category.isArchived ? (
-            <ArrowCounterClockwise className="size-4" />
+            <ArrowCounterClockwiseIcon className="size-4" />
           ) : (
-            <Archive className="size-4" />
+            <ArchiveIcon className="size-4" />
           )}
         </Button>
       </TableCell>
@@ -221,7 +219,7 @@ const Page = () => {
           <Subheading>Manage your product categories</Subheading>
         </div>
         <Button onClick={() => setShowAddForm((p) => !p)}>
-          <Plus className="size-4" />
+          <PlusIcon className="size-4" />
           {showAddForm ? "Close" : "Add Category"}
         </Button>
       </div>
@@ -248,18 +246,18 @@ const Page = () => {
         <Empty>
           <EmptyHeader>
             <EmptyMedia variant="icon">
-              <Archive className="size-4" />
+              <ArchiveIcon className="size-4" />
             </EmptyMedia>
             <EmptyTitle>No categories found</EmptyTitle>
             <EmptyDescription>
               {includeArchived
                 ? "No categories at all. Create one to get started."
-                : "No active categories. Toggle &quot;Show archived&quot; above or create a new one."}
+                : 'No active categories. Toggle "Show archived"  above or create a new one.'}
             </EmptyDescription>
           </EmptyHeader>
           <EmptyContent>
             <Button onClick={() => setShowAddForm(true)}>
-              <Plus className="size-4" />
+              <PlusIcon className="size-4" />
               Create Category
             </Button>
           </EmptyContent>
