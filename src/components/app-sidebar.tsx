@@ -43,7 +43,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <CaretDoubleUpIcon
                   size={48}
                   fill="#25D366"
-                  className="rotate-45 m-auto scale-125 "
+                  className="rotate-45 m-auto scale-125 dark:invert "
                 />
               </SidebarMenuButton>
             )}

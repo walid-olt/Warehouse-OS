@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { loginUserSchema } from "../schemas/userSchema";
@@ -33,9 +32,6 @@ export default function LoginForm() {
       if (result?.error) {
         setError("root", { message: "Invalid email or password." });
       } else {
-        toast.success("Welcome back!", {
-          description: "You've been signed in successfully.",
-        });
         router.push("/dashboard");
       }
     } catch (e) {
