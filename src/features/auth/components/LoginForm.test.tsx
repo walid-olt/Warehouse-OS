@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useRouter } from "next/navigation";
@@ -15,6 +16,18 @@ vi.mock("next-auth/react", () => ({
   signIn: vi.fn(),
 }));
 
+function renderLoginForm() {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false, gcTime: Infinity } },
+  });
+  render(
+    <QueryClientProvider client={queryClient}>
+      <LoginForm />
+    </QueryClientProvider>,
+  );
+  return queryClient;
+}
+
 describe("LoginForm Component", () => {
   const mockPush = vi.fn();
 
@@ -26,7 +39,7 @@ describe("LoginForm Component", () => {
   });
 
   it("renders email and password inputs and a submit button", () => {
-    render(<LoginForm />);
+    renderLoginForm();
 
     expect(screen.getByLabelText(/work email/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/password/i)).toBeInTheDocument();
@@ -46,7 +59,7 @@ describe("LoginForm Component", () => {
       url: null,
     });
 
-    render(<LoginForm />);
+    renderLoginForm();
 
     await user.type(screen.getByLabelText(/work email/i), "user@example.com");
     await user.type(screen.getByLabelText(/password/i), "password123");
@@ -79,7 +92,7 @@ describe("LoginForm Component", () => {
       url: "/dashboard",
     });
 
-    render(<LoginForm />);
+    renderLoginForm();
 
     await user.type(screen.getByLabelText(/work email/i), "user@example.com");
     await user.type(screen.getByLabelText(/password/i), "password123");
@@ -89,5 +102,29 @@ describe("LoginForm Component", () => {
     await waitFor(() => {
       expect(mockPush).toHaveBeenCalledWith("/dashboard");
     });
+  });
+
+  it("clears the query cache on successful login", async () => {
+    const user = userEvent.setup();
+
+    (signIn as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+      error: null,
+      status: 200,
+      ok: true,
+      url: "/dashboard",
+    });
+
+    const queryClient = renderLoginForm();
+    queryClient.setQueryData(["products"], [{ _id: "prev-user-data" }]);
+
+    await user.type(screen.getByLabelText(/work email/i), "user@example.com");
+    await user.type(screen.getByLabelText(/password/i), "password123");
+
+    await user.click(screen.getByRole("button", { name: /sign in/i }));
+
+    await waitFor(() => {
+      expect(mockPush).toHaveBeenCalledWith("/dashboard");
+    });
+    expect(queryClient.getQueryData(["products"])).toBeUndefined();
   });
 });

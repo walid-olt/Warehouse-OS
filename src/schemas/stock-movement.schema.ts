@@ -12,3 +12,8 @@ export const stockMovementSchema = z.object({
   note: z.string().optional(),
   createdAt: z.coerce.date().default(() => new Date()),
 });
+
+export const stockMoveSchema = stockMovementSchema.omit({
+  _id: true,
+  createdAt: true,
+});
