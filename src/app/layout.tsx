@@ -4,6 +4,7 @@ import {
   Open_Sans as Sans,
   Merriweather as Serif,
 } from "next/font/google";
+import { auth } from "@/auth";
 import { Providers } from "@/components/providers";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
@@ -41,11 +42,12 @@ const themeScript = `
 })()
 `;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -56,7 +58,7 @@ export default function RootLayout({
         className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}
       >
         <ThemeProvider>
-          <Providers>{children}</Providers>
+          <Providers session={session}>{children}</Providers>
           <Toaster />
         </ThemeProvider>
       </body>

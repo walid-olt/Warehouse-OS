@@ -60,7 +60,7 @@ export function errorResponse(
   code: ErrorCode,
   message: string,
   status: number = 400,
-  details?: any,
+  details?: unknown,
 ): NextResponse<ApiErrorResponse> {
   return NextResponse.json(
     {
@@ -68,7 +68,7 @@ export function errorResponse(
       error: {
         code,
         message,
-        ...(details && { details }),
+        ...(details !== undefined ? { details } : {}),
       },
     },
     { status },

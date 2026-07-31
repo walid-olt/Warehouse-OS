@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "biome check",
     "check": "tsc --noEmit ",
+    "db:reset": "node scripts/reset-db.mjs",
     "format": "biome format --write --fix",
     "test": "vitest run",
     "test:watch": "vitest"

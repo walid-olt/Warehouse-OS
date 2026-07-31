@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Fragment } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,7 +11,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { cn } from "@/lib/utils";
 
 const segmentLabels: Record<string, string> = {
   dashboard: "Dashboard",
@@ -33,23 +33,23 @@ export function DynamicBreadcrumb({ className }: { className?: string }) {
       <BreadcrumbList className="font-semibold">
         {segments.map((segment, index) => {
           const isLast = index === segments.length - 1;
-          const href = "/" + segments.slice(0, index + 1).join("/");
+          const href = `/${segments.slice(0, index + 1).join("/")}`;
 
           return (
-            <BreadcrumbItem key={segment}>
-              {!isLast ? (
-                <>
+            <Fragment key={segment}>
+              <BreadcrumbItem>
+                {!isLast ? (
                   <BreadcrumbLink render={<Link href={href} />}>
                     {formatLabel(segment)}
                   </BreadcrumbLink>
-                  <BreadcrumbSeparator />
-                </>
-              ) : (
-                <BreadcrumbPage className="font-semibold">
-                  {formatLabel(segment)}
-                </BreadcrumbPage>
-              )}
-            </BreadcrumbItem>
+                ) : (
+                  <BreadcrumbPage className="font-semibold">
+                    {formatLabel(segment)}
+                  </BreadcrumbPage>
+                )}
+              </BreadcrumbItem>
+              {!isLast && <BreadcrumbSeparator />}
+            </Fragment>
           );
         })}
       </BreadcrumbList>

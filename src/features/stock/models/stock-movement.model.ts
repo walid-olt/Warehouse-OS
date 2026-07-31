@@ -5,6 +5,7 @@ export interface IStockMovementDocument
   extends Omit<StockMovement, "productId" | "_id"> {
   _id?: Types.ObjectId;
   productId: Types.ObjectId;
+  userId: Types.ObjectId;
 }
 
 const stockMovementMongooseSchema = new Schema<IStockMovementDocument>(
@@ -19,10 +20,16 @@ const stockMovementMongooseSchema = new Schema<IStockMovementDocument>(
     },
     note: { type: String },
     createdAt: { type: Date, default: Date.now },
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+      index: true,
+    },
   },
   { timestamps: { createdAt: true, updatedAt: false } },
 );
 
 export const StockMovementModel =
   (mongoose.models.StockMovement as Model<IStockMovementDocument>) ||
-  model<IStockMovementDocument>("StockMovekent", stockMovementMongooseSchema);
+  model<IStockMovementDocument>("StockMovement", stockMovementMongooseSchema);

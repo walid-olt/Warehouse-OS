@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
@@ -11,6 +12,7 @@ import type { LoginUserDto } from "../types";
 
 export default function LoginForm() {
   const router = useRouter();
+  const queryClient = useQueryClient();
   const {
     register,
     formState: { errors, isSubmitting },
@@ -32,6 +34,7 @@ export default function LoginForm() {
       if (result?.error) {
         setError("root", { message: "Invalid email or password." });
       } else {
+        queryClient.clear();
         router.push("/dashboard");
       }
     } catch (e) {
