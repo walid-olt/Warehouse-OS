@@ -16,7 +16,11 @@ import { useCreateProduct, useUpdateProduct } from "../hooks/useProducts";
 
 const productFormSchema = z.object({
   name: z.string().min(3, "Product name must be at least 3 characters"),
-  sku: z.string().min(1, "SKU is required"),
+  sku: z
+    .string()
+    .min(8, "SKU must be at least 8 characters")
+    .regex(/^[A-Z0-9]+$/, "SKU must be alphanumeric and uppercase")
+    .max(12, "SKU must be at most 12 characters"),
   description: z.string().optional(),
   category: objectIdSchema,
   price: z.number().positive("Price must be a positive number"),
@@ -120,7 +124,7 @@ const ProductForm = ({
           </label>
           <Input
             id="product-sku"
-            placeholder="e.g. WH-1001"
+            placeholder="e.g. WH1001AB"
             disabled={isEditing}
             aria-invalid={!!errors.sku}
             {...register("sku")}
